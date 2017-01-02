@@ -1,0 +1,26 @@
+<h1>Блог</h1>
+<%= link_to 'Главная', controller: 'articles' %>
+<%= link_to 'Новая', new_article_path %>
+
+
+<h2>Listing articles</h2>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Посмотреть', article_path(article) %></td>
+      <td><%= link_to 'Изменить', edit_article_path(article) %></td>
+      <td><%= link_to 'Удалить', article_path(article),
+              method: :delete,
+              data: { confirm: 'Вы уверены?' } %></td>
+
+    </tr>
+  <% end %>
+</table>
