@@ -3,9 +3,9 @@
 	  <%= @article.title %>
 	</h2>
  
-<p style="padding-bottom:50px;">
+<p>
 	<%= image_tag @article.image.url(:large), class: 'image-show' if @article.image? %>
-  <%= @article.text %><br>
+  <%= @article.text.html_safe %><br>
   <small>        	
   	<time><%= @article.created_at.strftime("%Y-%m-%d") %></time> | 
 	<%= link_to 'Изменить', edit_article_path(@article) %>
