@@ -1,15 +1,15 @@
 <p>
-  <strong>Commenter:</strong>
+  <strong>Имя:</strong>
   <%= comment.commenter %>
 </p>
  
 <p>
-  <strong>Comment:</strong>
+  <strong>Комментарий:</strong>
   <%= comment.body %>
 </p>
 
 <p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
+  <small><%= link_to 'Удалить комментарий', [comment.article, comment],
                method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+               data: { confirm: 'Вы уверены?' } %></small>
 </p>

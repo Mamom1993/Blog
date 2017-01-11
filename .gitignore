@@ -9,6 +9,9 @@
 /log/*.log
 /tmp
 
+# Игнорирование файлов закачки
+ /public/uploads/article/image/
+
 # Игнорирование прочих ненужных файлов.
 database.yml
 doc/

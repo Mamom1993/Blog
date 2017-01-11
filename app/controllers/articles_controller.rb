@@ -2,12 +2,13 @@ class ArticlesController < ApplicationController
 
 	http_basic_authenticate_with name: "admin", password: "admin", except: [:index, :show]
 
+	before_action :article_find, only: [:show, :edit, :update, :destroy]
+
 	def index
 		@articles = Article.all
 	end
 
   	def show
-  		@article = Article.find(params[:id])
   	end
 
 	def new
@@ -15,40 +16,39 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-		@article = Article.find(params[:id])		
 	end
 
 	def create
 		@article = Article.new(article_params)
 
 		if @article.save
-		redirect_to @article
+		redirect_to @article, success: 'Статья создана'
 		else
-		render 'new'
+		render 'new', info: 'Статья не создана'
 		end
 	end
 
 	def update
-		@article = Article.find(params[:id])
-
 		if @article.update(article_params)
-		redirect_to @article
+		redirect_to @article, success: 'Статья обновлена'
 		else
-		render 'edit'	
+		render 'edit', danger: 'Статья не обновлена'	
 		end	
 	end
 
 	def destroy
-		@article = Article.find(params[:id])
 		@article.destroy
-
-		redirect_to articles_path
+		redirect_to articles_path, danger: 'Статья удалена'
 	end
 
 	private
 
+	def article_find
+		@article = Article.find(params[:id])
+	end
+
   	def article_params
-    	params.require(:article).permit(:title, :text)
+    	params.require(:article).permit(:title, :text, :image)
   	end
 
 end

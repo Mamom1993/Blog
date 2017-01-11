@@ -1,19 +1,26 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<article class="post">
+	<h2>
+	  <%= @article.title %>
+	</h2>
  
 <p>
-  <strong>Text:</strong>
-  <%= @article.text %>
+	<%= image_tag @article.image.url(:large), class: 'image-show' if @article.image? %>
+  <%= @article.text.html_safe %><br>
+  <small>        	
+  	<time><%= @article.created_at.strftime("%Y-%m-%d") %></time> | 
+	<%= link_to 'Изменить', edit_article_path(@article) %>
+  </small>
+
 </p>
 
-<h2>Комментарии</h2>
+</article>
+
+
+<h4>Комментарии:</h4>
 <%= render @article.comments %>
  
-<h2>Добавить комментарий:</h2>
+<h4 style="padding-top:30px;">Добавить комментарий:</h4>
 <%= render 'comments/form' %>
 
-<%= link_to 'Изменить', edit_article_path(@article) %> |
-<%= link_to 'На главную', articles_path %>
+
 
