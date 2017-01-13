@@ -22,7 +22,7 @@ gem 'simple_form'
 gem 'slim'
 
 gem 'bootstrap-sass'
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

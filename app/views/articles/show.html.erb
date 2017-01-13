@@ -6,7 +6,10 @@
 <p>
 	<%= image_tag @article.image.url(:large), class: 'image-show' if @article.image? %>
   <%= @article.text.html_safe %><br>
-  <small>        	
+  <small>
+  	<% if @article.category.present? %>
+  		<%= link_to @article.category.name, @article.category %> |
+  	<% end %>        	
   	<time><%= @article.created_at.strftime("%Y-%m-%d") %></time> | 
 	<%= link_to 'Изменить', edit_article_path(@article) %>
   </small>

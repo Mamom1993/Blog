@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
 	resources :pictures, only: [:create, :destroy]
 
+	resources :categories
+
+
 
 end
 
